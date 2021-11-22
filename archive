@@ -1,0 +1,73 @@
+<?php
+/**
+ * The template for displaying the archive loop.
+ */
+ ?>
+
+<div class="row" data-masonry='{"percentPosition": true }'>
+            <div class="col-md-6 mb-3">
+
+              <div class="card">
+   
+               <a href="<?php the_permalink(); ?>"> <?php the_post_thumbnail('medium', array('class' => 'card-img-top')); ?> </a>
+        
+                
+                <div class="card-body">
+
+                  <?//php bootscore_category_badge(); ?>
+                <!-- the category -->
+                <div class="text-center"> <span class="text-muted"><?php $categories = get_the_category();
+                if ( ! empty( $categories ) ) {
+                echo '<a class="card-link" href="' . esc_url( get_category_link( $categories[0]->term_id ) ) . '">' . esc_html( $categories[0]->name ) . '</a>';
+                } ?></span> </div>
+                <!-- end the category -->
+                  <h3 class="blog-post-title  text-center">
+                    <a href="<?php the_permalink(); ?>">
+                      <?php the_title(); ?>
+                    </a>
+                  </h3>
+
+                  <?php if ('post' === get_post_type()) : ?>
+
+                    <small class="text-muted mb-2">
+                      <?php
+                      //bootscore_date();
+                      //bootscore_author();
+                      //bootscore_comments();
+                      //bootscore_edit();
+                    // echo moneymint_article_posted_on();
+                     echo moneymint_reading_time();
+                      ?>
+                    </small>
+
+                  <?php endif; ?>
+
+                  <div class="card-text">
+                    <?php the_excerpt(); ?>
+                  </div>
+
+                  <div class="">
+                    <a class="read-more" href="<?php the_permalink(); ?>"><?php _e('Read more »', 'moneymint'); ?></a>
+                  </div>
+
+                  <?//php bootscore_tags(); ?>
+
+                </div><!-- card-body -->
+
+              </div><!-- card -->
+
+            </div><!-- col -->
+</div><!-- .row -->
+        
+    
+   
+     
+<style>
+ .card {
+    transition: 0.3s;}
+ .card:hover {
+    box-shadow: 0 0 45px gray}
+</style>
+        
+	                     
+      
